@@ -2,6 +2,7 @@ package br.com.cwi.estouaquiapp
 
 import android.content.Context
 import android.content.IntentFilter
+import android.graphics.Color
 import android.net.wifi.p2p.WifiP2pManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -39,11 +40,12 @@ class IniciarChamadaActivity : AppCompatActivity() {
         discoverButton.setOnClickListener {
             mManager.discoverPeers(mChannel, object : WifiP2pManager.ActionListener {
                 override fun onSuccess() {
-                    Toast.makeText(this@IniciarChamadaActivity, "Discover started", Toast.LENGTH_LONG).show()
+                    discoverButton.setBackgroundResource(R.drawable.button_enviado)
+                    Toast.makeText(this@IniciarChamadaActivity, "Presença sendo enviada...", Toast.LENGTH_LONG).show()
                 }
 
                 override fun onFailure(reasonCode: Int) {
-                    Toast.makeText(this@IniciarChamadaActivity, "Discover failure", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@IniciarChamadaActivity, "Algo deu errado", Toast.LENGTH_LONG).show()
                 }
             })
         }
